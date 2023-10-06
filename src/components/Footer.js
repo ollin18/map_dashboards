@@ -11,7 +11,7 @@ const FooterDash = () => {
             bottom: 0,
             width: '100%',
             height: '64px',
-            backgroundColor: '#00427D', //'#001529',
+            backgroundColor: '#003D4C', //'#001529',
             textAlign: 'center'
         }} >
         </Footer>

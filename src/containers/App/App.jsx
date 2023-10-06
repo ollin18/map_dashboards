@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBar from '../../components/NavBar';
-import Footer from '../../components/Footer';
+import FooterDash from '../../components/Footer';
 import { Layout } from 'antd';
 import Routes from '../../routes/index';
 
@@ -9,7 +9,7 @@ const App = () => {
     <Layout>
       <NavBar />
       <Routes />
-      <Footer />
+      <FooterDash />
     </Layout>
   );
 };

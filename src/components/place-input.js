@@ -10,10 +10,7 @@ import gdlData from '../containers/Users/data/gdl.geojson';
 import mtyData from '../containers/Users/data/mty.geojson';
 
 const PositionContainer = styled('div')({
-  position: 'absolute',
   zIndex: 1,
-  top: '0',
-  left: '0px',
   width: '100%',
   display: 'flex',
   justifyContent: 'left',
@@ -26,6 +23,9 @@ const PositionContainer = styled('div')({
   alignItems: 'center',
   padding: '0px',
 });
+
+// ... (rest of the code remains unchanged)
+
 
 
 const CITY = [

@@ -351,6 +351,8 @@ export default function Mapa() {
   }, []);
 
   const [theData, setTheData] = useState(dvi)
+
+  console.log(theData.rows)
   useEffect(() => {
     csv(dataCdmx, function (data) {
       const csvData = data.map(row => ({
@@ -598,7 +600,7 @@ export default function Mapa() {
   const pageSize = 16;
   return (
     <Layout >
-      <div style={{ position: 'absolute', zIndex: 0, height: "calc(100% - 128px)", width: "calc(100% - 500px)", marginTop: "0px", bottom: '64px', marginRight: "600px" }}>
+      <div style={{ position: 'absolute', zIndex: 0, height: "calc(100% - 96px - 64px)", width: "calc(100% - 500px)", bottom: "64px", marginLeft : "-9px"}}>
         <Content >
           <DeckGL
             views={constants.MAP_VIEW}
@@ -614,29 +616,28 @@ export default function Mapa() {
           <ColorBar min={window.min} max={window.max} tickdiv={window.tickdiv} />
         </Content>
       </div>
-      <Sider width={500} style={{ overflow: 'auto', position: 'fixed', height: '100%', width: '100%', right: 0, backgroundColor: '#00427D', textAlign: 'center' }}>
+      <Sider width={"500px"} style={{ position: 'absolute', zIndex:0, overflow: 'auto', height: 'calc(100% - 96px - 64px)', bottom: "64px",  width: '100%', right: 0, backgroundColor: '#3D707F', textAlign: 'center' }}>
 
-        <LightSwitch onChange={changeColor} />
+        <div style={{
+            display: 'grid',
+            gridTemplateRows: '1fr 1fr',
+            gap: '4px',
+            alignItems: 'start'
+        }}>
+            <CityInput style={{ width: '100%' }} onChange={goToCity} />
+            <LightSwitch onChange={changeColor} />
+            <TaxonomyPlot style={{ width: '100%' }} data={theData.rows} />
+            <Checkbox style={{ backgroundColor: '#3D707F' }} indeterminate={indeterminate} onChange={onCheckAllChange} checked={checkAll}>
+              Check all
+            </Checkbox>
+            <CheckboxGroup style={{ backgroundColor: '#3D707F' }} options={plainOptions} value={checkedList} onChange={onChangeChecked} />
 
-        <CityInput style={{ width: '100%', top: '0px' }} onChange={goToCity} />
-        <TaxonomyPlot style={{ position: 'relative', zIndex: 1, width: '100%', top: '10px' }} data={theData.rows} />
-        <div style={{ position: 'relative', zIndex: 1, height: '40px', top: '10%' }}>
-          <Checkbox style={{ backgroundColor: 'white' }}
-            indeterminate={indeterminate} onChange={onCheckAllChange} checked={checkAll}>
-            Check all
-          </Checkbox>
-        </div>
-        <div style={{ position: 'relative', zIndex: 1, height: '40px', top: '10%' }}>
-          <CheckboxGroup style={{ backgroundColor: 'white' }}
-            options={plainOptions} value={checkedList} onChange={onChangeChecked} />
-        </div>
+            <Table rowSelection={{ stateTable, onChange: onSelectChange, onSelectAll: onSelectAllChange }}
+              dataSource={dsTable.rows} size={'small'}
+              style={{ height: '100%', width: '80%', left: '100px' }}
+              columns={columns} scroll={{ y: 'fit-content' }} sticky={false}
+              bordered pagination={data.length > pageSize && { pageSize }} />
 
-        <div style={{ position: 'relative', zIndex: 1, height: '90%', top: '10%', left: "10%" }}>
-          <Table rowSelection={{ stateTable, onChange: onSelectChange, onSelectAll: onSelectAllChange }}
-            dataSource={dsTable.rows} size={'small'}
-            style={{ height: '100%', width: '80%' }}
-            columns={columns} scroll={{ y: 'fit-content' }} sticky={false}
-            bordered pagination={data.length > pageSize && { pageSize }} />
         </div>
 
       </Sider>
