@@ -1,21 +1,44 @@
 {
-  "name": "map_dashboard",
+  "name": "react-redux-antd-boilerplate",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "20.8.0"
+  },
   "dependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "@ant-design/icons": "^5.2.6",
+    "@antv/data-set": "^0.11.8",
+    "@mui/icons-material": "^5.14.12",
+    "@mui/material": "^5.14.12",
+    "antd": "^4.16.13",
+    "bizcharts": "^4.1.10",
+    "chokidar": "^3.5.3",
+    "d3": "^6.7.0",
+    "d3-request": "^1.0.6",
+    "deck.gl": "^8.6.5",
+    "jquery": "^3.6.0",
+    "mapbox": "^1.0.0-beta10",
+    "react": "^17.0.2",
+    "react-app-rewired": "^2.1.8",
+    "react-dom": "^17.0.2",
+    "react-map-gl": "^6.1.16",
+    "react-redux": "^7.2.5",
+    "react-router-dom": "^5.3.0",
+    "react-router-redux": "^5.0.0-alpha.9",
+    "react-scripts": "4.0.3",
+    "redux": "^4.1.1",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
+    "eject": "react-app-rewired eject"
+  },
+  "devDependencies": {
+    "babel-plugin-import": "^1.13.3",
+    "customize-cra": "^1.0.0",
+    "less-loader": "^6.2.0"
   },
   "eslintConfig": {
     "extends": [
